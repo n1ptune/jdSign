@@ -24,7 +24,7 @@ def getSign(functionId, body, uuid, client, clientVersion):
     st = str(int(round(t * 1000)))
     encryptId = randint(0, 2)
     offset = randint(0, 2)
-    sv = "1" + str(encryptId) + str(offset)
+    sv = "1" + str(offset) + str(encryptId)
     data = "&".join(("functionId="+functionId, "body="+body, "uuid="+uuid, "client="+client, "clientVersion="+clientVersion, "st="+st, "sv="+sv))
     sign = hash(encrypt(data, len(data), encryptId, offset))
     print("st=" + st + "&sign=" + sign + "&sv=" + sv)
@@ -38,8 +38,7 @@ def main():
     client = "android"
     uuid = "YWC5Y2HuDNOnEWY0DWC0ZG=="
     body = "aaaa"
-    getSign(functionId, body, uuid, client, clientVersion)
+    Sign(functionId, body, uuid, client, clientVersion)
 if __name__ == "__main__":
     main()
 '''
-
