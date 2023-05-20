@@ -137,7 +137,8 @@ def TenMagic16(data, data_len):
         5: remain5,
         6: remain6,
         7: remain7
-    } 
-    result += switcher[remain](data[split_num*8:])
+    }
+    if remain != 0: 
+        result += switcher[remain](data[split_num*8:])
     
     return result

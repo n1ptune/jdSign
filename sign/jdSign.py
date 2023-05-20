@@ -29,7 +29,17 @@ def getSign(functionId, body, uuid, client, clientVersion):
     sign = hash(encrypt(data, len(data), encryptId, offset))
     print("st=" + st + "&sign=" + sign + "&sv=" + sv)
     return sign
-    
+
+def getSignWithstv(functionId, body, uuid, client, clientVersion):  
+    t = time.time()
+    st = str(int(round(t * 1000)))
+    encryptId = randint(0, 2)
+    offset = randint(0, 2)
+    sv = "1" + str(offset) + str(encryptId)
+    data = "&".join(("functionId="+functionId, "body="+body, "uuid="+uuid, "client="+client, "clientVersion="+clientVersion, "st="+st, "sv="+sv))
+    sign = hash(encrypt(data, len(data), encryptId, offset))
+    print("st=" + st + "&sign=" + sign + "&sv=" + sv)
+    return "st=" + st + "&sign=" + sign + "&sv=" + sv
 #test
 '''
 def main():
