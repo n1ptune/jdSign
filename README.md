@@ -6,6 +6,8 @@ The emu directory include emulate code for some function.
 
 # How to use
 
+#### see /sign/test.py
+
 ```python
 from jdSign import getSign
 
